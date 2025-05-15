@@ -14,4 +14,4 @@ If you want to contribute to this go ahead idrc just do a pr
 **This project was made a way for me to learn rust, it's highly unoptimized and will not work for you without errors**
 
 # Leak
-[Watch this video to understand how it works](./video/2025-02-23_05-38-26.mp4)
+https://github.com/user-attachments/assets/ebf7b158-4b5b-46db-9f33-7533895b41e9
