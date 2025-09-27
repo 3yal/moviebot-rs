@@ -80,7 +80,7 @@ async fn event_handler(
                                     Ok(data) => data,
                                     Err(_) => return Ok(()),
                                 };
-                                if let Err(err) = Streamer::start(&movie_data[0].0.to_string(), streaming_service, "1000710976343134293").await {
+                                if let Err(err) = Streamer::start(&movie_data[0].0.to_string(), streaming_service, "1421137405158756543").await {
                                     eprintln!("Streamer Failed: {:?}", err)
                                 }
                             } else if streaming_service == "Netflix" {
@@ -142,7 +142,7 @@ async fn event_handler(
                                         }
                                     } else {
                                         println!("{:?}", movie_data[0].0.to_string());
-                                        if let Err(err) = Streamer::start(&movie_data[0].0.to_string(), streaming_service, "1000710976343134293").await {
+                                        if let Err(err) = Streamer::start(&movie_data[0].0.to_string(), streaming_service, "1421137405158756543").await {
                                             eprintln!("Streamer Failed: {:?}", err)
                                         }
                                         if let Some(channel) = component_interaction.channel_id.to_channel(&_ctx.http).await.ok().and_then(|c| c.guild()) {
@@ -241,7 +241,7 @@ async fn event_handler(
                                     if let Err(err) = message.edit(&_ctx.http, EditMessage::new().embed(CreateEmbed::new().title("Please Wait for the Controller").description("The Controller will start once the movie/show has started, Please sit tight till that happens.")).remove_all_attachments().components(vec![])).await {
                                         eprintln!("Failed to edit interaction message: {:?}", err);
                                     }
-                                    if let Err(err) = Streamer::start(&format!("https://netflix.com/watch/{}", selected_episode_id), "Netflix", "1000710976343134293").await {
+                                    if let Err(err) = Streamer::start(&format!("https://netflix.com/watch/{}", selected_episode_id), "Netflix", "1421137405158756543").await {
                                         eprintln!("Streamer Failed: {:?}", err)
                                     }
                                     if let Err(err) = message.edit(&_ctx.http, EditMessage::new().embed(embed).remove_all_attachments().components(vec![action_row])).await {
@@ -345,7 +345,7 @@ pub async fn main() {
         .setup(move |ctx, _ready, framework| {
             Box::pin(async move {
                 println!("Logged in as {}", _ready.user.name);
-                poise::builtins::register_in_guild(ctx, &framework.options().commands, GuildId::new(1000710976343134289)).await?;
+                poise::builtins::register_in_guild(ctx, &framework.options().commands, GuildId::new(1421128559803498568)).await?;
                 Ok(Data {
                     votes: Mutex::new(HashMap::new()),
                 })
@@ -354,7 +354,7 @@ pub async fn main() {
         .options(options)
         .build();
 
-    let token = "Discord bot token here";
+    let token = "MTQyMTM0OTc4NDAwNjAzMzU0Mg.Ggs_DP.lmx0ky0TNA05PbID2KevDN_PgRk72-FKARWky4";
     let intents =
         serenity::GatewayIntents::non_privileged() | serenity::GatewayIntents::MESSAGE_CONTENT;
 

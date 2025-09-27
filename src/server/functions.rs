@@ -31,7 +31,7 @@ pub struct DiscordData {
 impl Default for DiscordData {
     fn default() -> Self {
         Self {
-            id: "1000710976343134293".to_string(),
+            id: "1421137405158756543".to_string(),
         }
     }
 }
@@ -69,20 +69,23 @@ pub async fn start_discord(driver: WebDriver, discord_data: Option<DiscordData>,
 
     driver.goto("https://discord.com/login").await?;
     //Put token here
-    driver.execute(return_script("Token"), Vec::new()).await?;
-    driver.goto("https://discord.com/channels/1000710976343134289/1010686745840472104").await?;
+    driver.execute(return_script("NjQyNTEzODMyMjcwNjI2ODE3.G0WY1j.JnhBCn8aKsz_Z1653pKnFKuEQrTrfl7kfgDcp0"), Vec::new()).await?;
+    driver.goto("https://discord.com/channels/1421128559803498568/1421136835396243618").await?;
     tokio::time::sleep(Duration::from_secs(4)).await;
     driver.find(By::Css(format!("[data-list-item-id='channels___{}']", discord_data.unwrap_or_default().id))).await?.click().await?;
     tokio::time::sleep(Duration::from_secs(2)).await;
-
+    let main_window = driver.window().await?;
     driver.execute("window.open('about:blank')", Vec::new()).await?;
+    
     let windows = driver.windows().await?;
-    driver.switch_to_window(windows[1].clone()).await?;
+    let new_window = windows.iter().find(|w| *w != &main_window).unwrap();
+    println!("Windows: {:?}", windows);
+    driver.switch_to_window(main_window).await?;
 
-    driver.find(By::XPath("//*[@id=\"app-mount\"]/div[2]/div[1]/div[1]/div/div[2]/div/div/div/div/div[1]/section/div[1]/div/div[2]/button[2]")).await?.click().await?;
+    driver.find(By::XPath("//*[@id=\"app-mount\"]/div[2]/div/div[1]/div/div[2]/div/div/div/div[2]/div[1]/section/div[1]/div/div[2]/button[2]")).await?.click().await?;
     tokio::time::sleep(Duration::from_secs(3)).await;
 
-    driver.switch_to_window(windows[2].clone()).await?;
+    driver.switch_to_window(new_window.clone()).await?;
     if r#type == "Fasel" {
         let fasel = Fasel::new(driver.clone()).await;
         fasel.start(url).await?;
