@@ -55,7 +55,7 @@ impl Streamer {
 #[tokio::main]
 async fn main() {
     client::client::main().await;
-    // match ShahidSearcher::search("كامل العدد").await {
+    // match ShahidSearcher::search("shush").await {
     //     Ok(results) => {
     //         ShahidSearcher::fetch_shahid_playlist(&results[0].1).await;
     //     }
