@@ -6,7 +6,7 @@ use thirtyfour::{error::{WebDriverError, WebDriverResult}, By, Cookie, WebDriver
 
 use crate::server::functions::DRIVER_INSTANCE;
 //Put full cookies here
-const COOK: &str = "nfvdid=BQFmAAEBEGG82PJqtHmDiqWkdixVH1Jgj1vw4dpqDxTuM74P8VEm4DuFzkAZHRWmpvSzm0QpZZ2cWuxKOmZ-eKWNeTdwLrt6ay-T2lN9pHr3ZrFSGzWCuFM2xaAioH4XZYSJX1E-33Z5STRS1XmXr3I9ft2adtzQ; netflix-sans-normal-3-loaded=true; netflix-sans-bold-3-loaded=true; OptanonAlertBoxClosed=2025-09-14T22:07:34.723Z; SecureNetflixId=v%3D3%26mac%3DAQEAEQABABSNClRlxNl90B_rCu9Lfd_Z2dQnn4Ad_TE.%26dt%3D1758946807337; NetflixId=ct%3DBgjHlOvcAxLuA3ZVCsRCsX7yuSkWdE6J7H4ogOLg7kVMGcN5x7MKe6Wjenp8OMXAZnulXZxCO22IixHScVuyrmst6XYhflzLI0J0LTeQaqRhg5sGc7cESiaxysL5xcmZzmJsBTMh_ghzyG6anRFGgBONP_lGw6SgTLlUmis2TiH1L2PArMKCGN8aC7BQsf8ZO2lY-NX71j3muyNXuy5BrCS0pTcugjEPAboSxx7Um-cz0_-r-n3K2Bbegtx_WjideDQ5PesHlO4LcvCUClT1QgjTmOLOpFs_k7Np7c2yMQFmNjhlyIiw4i9-cIpwPfKIKrtX6QJUiMRENwXPA4QqwWNCvhDBHd33wAWCSw9toGYStKdDgihylNa7k-45XkmEqCce66XCp2PHkmyKTUAk48xWZKgXFP7l4HqOeCm_BbP2NhWe_-nk1uvMcXwAog8BjMQGnwRLQ89jbywUwJ0225mvev9Ol53iLVpapA9Xm5NfAuzXdse2ryj5jYtz9CDEs_rh8UW9pIw4B6hSf9sPNdtqAujOIjvhFM1m3-oIOzQnnTlhwJ22B-9fnO2m1AHyow-G9GjyCALUrSf0iCRMV9xAWnozJZluiDw1iRkxea1W-scl99yfHVEQqiN24-tzkUAfYS2BiXtjC11EW7ajDmWbr_h0PowrGAYiDgoMkLuXyzVv6JNbktQr%26ch%3DAQEAEAABABQREV5p_q-aW80QDqiOZ-fl4qX9Wyp2a6I.%26v%3D3%26pg%3DJYH2XQN2E5BRZHXFX2IFOXEV5Y; flwssn=67b947df-7a8e-487b-8776-fa6244a80a9b; profilesNewSession=0; gsid=1a780dca-ed71-4aef-8a4a-f910fd27ff7c; OptanonConsent=isGpcEnabled=0&datestamp=Sat+Sep+27+2025+07%3A22%3A29+GMT%2B0300+(Eastern+European+Summer+Time)&version=202508.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=c1fe26d4-d8af-4e2b-b5d2-f7673ce32523&interactionCount=2&isAnonUser=1&landingPath=NotLandingPage&AwaitingReconsent=false&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1&intType=1&geolocation=EG%3BC";
+const COOK: &str = ""
 pub struct Netflix {
     driver: Arc<WebDriver>,
 }
@@ -353,148 +353,7 @@ impl Netflix {
             println!("Warning: Some cookies were not deleted!");
         }
         //Put cookie json here
-        let cookies_json = r#"[
-{
-    "domain": ".netflix.com",
-    "expirationDate": 1758957606.602383,
-    "hostOnly": false,
-    "httpOnly": false,
-    "name": "flwssn",
-    "path": "/",
-    "sameSite": "unspecified",
-    "secure": false,
-    "session": false,
-    "storeId": "0",
-    "value": "67b947df-7a8e-487b-8776-fa6244a80a9b",
-    "id": 1
-},
-{
-    "domain": ".netflix.com",
-    "expirationDate": 1759033207.438299,
-    "hostOnly": false,
-    "httpOnly": true,
-    "name": "gsid",
-    "path": "/",
-    "sameSite": "no_restriction",
-    "secure": true,
-    "session": false,
-    "storeId": "0",
-    "value": "1a780dca-ed71-4aef-8a4a-f910fd27ff7c",
-    "id": 2
-},
-{
-    "domain": ".netflix.com",
-    "expirationDate": 1766722953.708635,
-    "hostOnly": false,
-    "httpOnly": false,
-    "name": "netflix-sans-bold-3-loaded",
-    "path": "/",
-    "sameSite": "unspecified",
-    "secure": false,
-    "session": false,
-    "storeId": "0",
-    "value": "true",
-    "id": 3
-},
-{
-    "domain": ".netflix.com",
-    "expirationDate": 1766722953.708465,
-    "hostOnly": false,
-    "httpOnly": false,
-    "name": "netflix-sans-normal-3-loaded",
-    "path": "/",
-    "sameSite": "unspecified",
-    "secure": false,
-    "session": false,
-    "storeId": "0",
-    "value": "true",
-    "id": 4
-},
-{
-    "domain": ".netflix.com",
-    "expirationDate": 1790482806.015352,
-    "hostOnly": false,
-    "httpOnly": true,
-    "name": "NetflixId",
-    "path": "/",
-    "sameSite": "lax",
-    "secure": true,
-    "session": false,
-    "storeId": "0",
-    "value": "ct%3DBgjHlOvcAxLuA3ZVCsRCsX7yuSkWdE6J7H4ogOLg7kVMGcN5x7MKe6Wjenp8OMXAZnulXZxCO22IixHScVuyrmst6XYhflzLI0J0LTeQaqRhg5sGc7cESiaxysL5xcmZzmJsBTMh_ghzyG6anRFGgBONP_lGw6SgTLlUmis2TiH1L2PArMKCGN8aC7BQsf8ZO2lY-NX71j3muyNXuy5BrCS0pTcugjEPAboSxx7Um-cz0_-r-n3K2Bbegtx_WjideDQ5PesHlO4LcvCUClT1QgjTmOLOpFs_k7Np7c2yMQFmNjhlyIiw4i9-cIpwPfKIKrtX6QJUiMRENwXPA4QqwWNCvhDBHd33wAWCSw9toGYStKdDgihylNa7k-45XkmEqCce66XCp2PHkmyKTUAk48xWZKgXFP7l4HqOeCm_BbP2NhWe_-nk1uvMcXwAog8BjMQGnwRLQ89jbywUwJ0225mvev9Ol53iLVpapA9Xm5NfAuzXdse2ryj5jYtz9CDEs_rh8UW9pIw4B6hSf9sPNdtqAujOIjvhFM1m3-oIOzQnnTlhwJ22B-9fnO2m1AHyow-G9GjyCALUrSf0iCRMV9xAWnozJZluiDw1iRkxea1W-scl99yfHVEQqiN24-tzkUAfYS2BiXtjC11EW7ajDmWbr_h0PowrGAYiDgoMkLuXyzVv6JNbktQr%26ch%3DAQEAEAABABQREV5p_q-aW80QDqiOZ-fl4qX9Wyp2a6I.%26v%3D3%26pg%3DJYH2XQN2E5BRZHXFX2IFOXEV5Y",
-    "id": 5
-},
-{
-    "domain": ".netflix.com",
-    "expirationDate": 1776325600.996144,
-    "hostOnly": false,
-    "httpOnly": false,
-    "name": "nfvdid",
-    "path": "/",
-    "sameSite": "unspecified",
-    "secure": false,
-    "session": false,
-    "storeId": "0",
-    "value": "BQFmAAEBEGG82PJqtHmDiqWkdixVH1Jgj1vw4dpqDxTuM74P8VEm4DuFzkAZHRWmpvSzm0QpZZ2cWuxKOmZ-eKWNeTdwLrt6ay-T2lN9pHr3ZrFSGzWCuFM2xaAioH4XZYSJX1E-33Z5STRS1XmXr3I9ft2adtzQ",
-    "id": 6
-},
-{
-    "domain": ".netflix.com",
-    "expirationDate": 1789423654,
-    "hostOnly": false,
-    "httpOnly": false,
-    "name": "OptanonAlertBoxClosed",
-    "path": "/",
-    "sameSite": "lax",
-    "secure": false,
-    "session": false,
-    "storeId": "0",
-    "value": "2025-09-14T22:07:34.723Z",
-    "id": 7
-},
-{
-    "domain": ".netflix.com",
-    "expirationDate": 1790482949,
-    "hostOnly": false,
-    "httpOnly": false,
-    "name": "OptanonConsent",
-    "path": "/",
-    "sameSite": "lax",
-    "secure": false,
-    "session": false,
-    "storeId": "0",
-    "value": "isGpcEnabled=0&datestamp=Sat+Sep+27+2025+07%3A22%3A29+GMT%2B0300+(Eastern+European+Summer+Time)&version=202508.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=c1fe26d4-d8af-4e2b-b5d2-f7673ce32523&interactionCount=2&isAnonUser=1&landingPath=NotLandingPage&AwaitingReconsent=false&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1&intType=1&geolocation=EG%3BC",
-    "id": 8
-},
-{
-    "domain": ".netflix.com",
-    "expirationDate": 1758948831.497596,
-    "hostOnly": false,
-    "httpOnly": false,
-    "name": "profilesNewSession",
-    "path": "/",
-    "sameSite": "unspecified",
-    "secure": false,
-    "session": false,
-    "storeId": "0",
-    "value": "0",
-    "id": 9
-},
-{
-    "domain": ".netflix.com",
-    "expirationDate": 1790482806.014867,
-    "hostOnly": false,
-    "httpOnly": true,
-    "name": "SecureNetflixId",
-    "path": "/",
-    "sameSite": "strict",
-    "secure": true,
-    "session": false,
-    "storeId": "0",
-    "value": "v%3D3%26mac%3DAQEAEQABABSNClRlxNl90B_rCu9Lfd_Z2dQnn4Ad_TE.%26dt%3D1758946807337",
-    "id": 10
-}
-]"#;
+        let cookies_json = r#""#;
 
         let cookies: Vec<CookieData> = serde_json::from_str(cookies_json).expect("Failed to parse cookies");
         add_cookies(&self.driver, &cookies).await?;
